@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Pessoa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            document.getElementById("nome").textContent = params.get("nome") || "Nome não encontrado";
+
+            // Simulação de dados
+            const dadosAtraso = {
+                "João Silva": { vezes: 5, horas: 12 },
+                "Maria Oliveira": { vezes: 2, horas: 4 },
+                "Carlos Santos": { vezes: 7, horas: 15 },
+                "Ana Souza": { vezes: 3, horas: 6 },
+                "Pedro Lima": { vezes: 6, horas: 13 }
+            };
+
+            const nome = params.get("nome");
+            const info = dadosAtraso[nome] || { vezes: "-", horas: "-" };
+
+            document.getElementById("vezesAtrasado").textContent = info.vezes;
+            document.getElementById("horasAtrasado").textContent = info.horas;
+        };
+    </script>
+</head>
+<body>
+    <!-- NavBar -->   
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse">  
+            <a class="navbar-brand" href="index.html">
+              <img src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_960_720.png" alt="Logo HTML5" width="40">
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="nav-link" href="demitidos.html" style="color: blue;">Demitidos</a>
+                <a class="nav-link" href="equipe.html" style="color: blue;">Equipe</a>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <!-- Cards -->
+    <div class="container mt-5">
+        <h1>Detalhes da Pessoa</h1>
+        <p><strong>Nome:</strong> <span id="nome"></span></p>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Vezes Atrasado</h5>
+                        <h1 id="vezesAtrasado">-</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Total de Horas Atrasado</h5>
+                        <h1 id="horasAtrasado">-</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn btn-primary mt-4">Voltar</a>
+    </div>
+</body>
+</html>
